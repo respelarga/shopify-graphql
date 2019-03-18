@@ -14,7 +14,7 @@ class template extends Component {
       <Query query={GET_HELLO}>
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
-          if (error) return <p>error</p>;
+          if (error) return <p>{JSON.stringify(error)}</p>;
           return <div>{JSON.stringify(data)};</div>;
         }}
       </Query>

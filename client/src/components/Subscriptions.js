@@ -19,9 +19,11 @@ class Subscriptions extends Component {
     return (
       <div>
         <Subscription subscription={SUBSCRIBE_HELLO}>
-          {({ data: { helloAdded }, loading }) => (
-            <h4>{JSON.stringify(helloAdded)}</h4>
-          )}
+          {({ loading, error, data }) => {
+            if (loading) return <p>Listening...</p>;
+            if (error) return <p>{JSON.stringify(error)}</p>;
+            return <div>{JSON.stringify(data)};</div>;
+          }}
         </Subscription>
       </div>
     );

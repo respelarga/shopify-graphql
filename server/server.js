@@ -35,10 +35,14 @@ app.use(
 );
 
 const server = new ApolloServer({
-  schema: Schema
-  /*context: ({ req }) => ({
-    cookie: req.cookies
-  }) */
+  schema: Schema,
+  context: async ({ req, connection }) => {
+    if (connection) {
+      return connection.context;
+    } else {
+      return { cookie: req.cookies };
+    }
+  }
 });
 
 server.applyMiddleware({ app });
