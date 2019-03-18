@@ -12,12 +12,15 @@ import { BrowserRouter } from "react-router-dom";
 import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 
+const port = process.env.PORT || 5000;
+const herokuUrl = process.env.HEROKU_URL || "localhost";
+
 const httpLink = new HttpLink({
   uri: "/graphql"
 });
 
 const wsLink = new WebSocketLink({
-  uri: "ws://localhost:5000/graphql",
+  uri: `ws://${herokuUrl}:${port}/graphql`,
   options: {
     reconnect: true
   }
