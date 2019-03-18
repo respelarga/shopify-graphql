@@ -13,7 +13,7 @@ import { WebSocketLink } from "apollo-link-ws";
 import { getMainDefinition } from "apollo-utilities";
 
 const port = process.env.PORT;
-const herokuUrl = process.env.APP_URL;
+const herokuUrl = process.env.REACT_APP_URL;
 
 const httpLink = new HttpLink({
   uri: "/graphql"
