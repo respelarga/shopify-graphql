@@ -20,7 +20,7 @@ mongoose
     console.log("Mongo DB connected");
   })
   .catch(err => {
-    console.log(`Unable to connect to MongoDBA: ${err}`);
+    console.log(`Unable to connect to MongoDB: ${err}`);
   });
 
 app.use(cookieParser());
