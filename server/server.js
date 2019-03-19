@@ -10,7 +10,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 
 dotenv.config();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 const MongoStore = connectMongo(session);
 const app = express();
 
@@ -54,13 +54,10 @@ server.installSubscriptionHandlers(httpServer);
 //   res.send("Hello from Expressss");
 // });
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(_dirname, "/../client", "build", "index.html"));
-  });
-}
+app.use(express.static("client/dist"));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(_dirname, "/../client", "dist", "index.html"));
+});
 
 httpServer.listen(port, err => {
   if (err) {
