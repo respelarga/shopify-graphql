@@ -53,6 +53,7 @@ const client = new ApolloClient({
 ReactDOM.render(
   <BrowserRouter>
     <ApolloProvider client={client}>
+      {console.log(`SERVER_PORT${SERVER_PORT}`)}
       {console.log(process.env.SERVER_PORT)}
       <App />
     </ApolloProvider>
